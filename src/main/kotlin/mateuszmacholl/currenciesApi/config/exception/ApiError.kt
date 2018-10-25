@@ -7,7 +7,7 @@ data class ApiError(
         val status: HttpStatus,
         val message: String
 ) {
-    val timestamp = LocalDateTime.now()
+    val timestamp = LocalDateTime.now()!!
     var errors: List<String> = listOf()
 
     constructor(status: HttpStatus, message: String, error: String) : this(status, message) {

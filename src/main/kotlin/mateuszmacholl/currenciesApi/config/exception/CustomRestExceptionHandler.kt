@@ -24,6 +24,7 @@ import javax.validation.ConstraintViolationException
 
 @ControllerAdvice
 class CustomRestExceptionHandler : ResponseEntityExceptionHandler() {
+
     override fun handleMethodArgumentNotValid(ex: MethodArgumentNotValidException, headers: HttpHeaders, status: HttpStatus, request: WebRequest): ResponseEntity<Any> {
         val apiError = createValidationError(ex)
         return handleExceptionInternal(ex, apiError, headers, apiError.status, request)

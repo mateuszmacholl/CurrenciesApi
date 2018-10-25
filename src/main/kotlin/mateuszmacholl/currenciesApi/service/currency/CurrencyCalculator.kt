@@ -1,4 +1,4 @@
-package mateuszmacholl.currenciesApi.service.helper
+package mateuszmacholl.currenciesApi.service.currency
 
 import org.springframework.stereotype.Service
 import java.lang.Math.pow
@@ -6,11 +6,12 @@ import kotlin.math.sqrt
 
 @Service
 class CurrencyCalculator {
-    fun calculateAverage(values: List<Double>): Double {
+
+    fun getAverage(values: List<Double>): Double {
         return Math.round(values.average() * 10000.0) / 10000.0
     }
 
-    fun calculateStandardDeviation(values: List<Double>): Double {
+    fun getStandardDeviation(values: List<Double>): Double {
         val average = values.average()
         val standardDeviation = sqrt(values
                 .map { it - average }
