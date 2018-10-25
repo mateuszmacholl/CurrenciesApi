@@ -1,10 +1,10 @@
 package mateuszmacholl.currenciesApi.service.currency
 
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 import java.lang.Math.pow
 import kotlin.math.sqrt
 
-@Service
+@Component
 class CurrencyCalculator {
 
     fun getAverage(values: List<Double>): Double {
