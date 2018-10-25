@@ -1,8 +1,8 @@
 package mateuszmacholl.currenciesApi.controller
 
 import mateuszmacholl.currenciesApi.converter.CurrencyConverter
-import mateuszmacholl.currenciesApi.service.currency.CurrencyService
-import mateuszmacholl.currenciesApi.validation.CorrectDateFormat
+import mateuszmacholl.currenciesApi.service.CurrencyService
+import mateuszmacholl.currenciesApi.validation.correctDateFormat.CorrectDateFormat
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
@@ -27,8 +27,8 @@ class CurrencyController(private val currencyService: CurrencyService,
 
     @RequestMapping(value = ["/{type}/sale-standard-deviation"], method = [RequestMethod.GET])
     fun getSaleStandardDeviation(@PathVariable(value = "type") type: String,
-                               @RequestParam @CorrectDateFormat startDate: String,
-                               @RequestParam @CorrectDateFormat endDate: String): ResponseEntity<*>{
+                                 @RequestParam @CorrectDateFormat startDate: String,
+                                 @RequestParam @CorrectDateFormat endDate: String): ResponseEntity<*>{
 
         val currencyExchangeRatesDto = currencyConverter.convertToCurrencyExchangeRatesDto(type, startDate, endDate)
         val saleStandardDeviation = currencyService.getStandardDeviation(currencyExchangeRatesDto)

@@ -1,7 +1,7 @@
-package mateuszmacholl.currenciesApi.service.dao
+package mateuszmacholl.currenciesApi.dao
 
 import mateuszmacholl.currenciesApi.dto.CurrencyExchangeRatesDto
-import mateuszmacholl.currenciesApi.service.connector.NbpApiConnector
+import mateuszmacholl.currenciesApi.connector.NbpApiConnector
 import org.springframework.stereotype.Repository
 
 @Repository

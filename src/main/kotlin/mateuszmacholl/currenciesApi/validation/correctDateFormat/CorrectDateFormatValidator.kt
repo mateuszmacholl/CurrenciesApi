@@ -1,4 +1,4 @@
-package mateuszmacholl.currenciesApi.validation
+package mateuszmacholl.currenciesApi.validation.correctDateFormat
 
 import java.text.SimpleDateFormat
 import javax.validation.ConstraintValidator

@@ -1,4 +1,4 @@
-package mateuszmacholl.currenciesApi.service.currency
+package mateuszmacholl.currenciesApi.component
 
 import org.springframework.stereotype.Component
 import java.lang.Math.pow

@@ -1,4 +1,4 @@
-package mateuszmacholl.currenciesApi.service.connector
+package mateuszmacholl.currenciesApi.connector
 
 import mateuszmacholl.currenciesApi.config.exception.nbp.NbpApiBadRequestException
 import mateuszmacholl.currenciesApi.dto.CurrencyExchangeRatesDto
