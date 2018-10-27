@@ -4,7 +4,7 @@ import mateuszmacholl.currenciesApi.dto.CurrencyExchangeRatesParameters
 import org.springframework.stereotype.Repository
 
 @Repository
-class CurrencyExchangeRatesNbpApiConstructor {
+class CurrencyExchangeRatesNbpApiPathConstructor {
     val apiPath: String = "http://api.nbp.pl/api/"
     val format: String = "json"
 

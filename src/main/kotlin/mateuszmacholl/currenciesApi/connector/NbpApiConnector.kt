@@ -1,7 +1,7 @@
 package mateuszmacholl.currenciesApi.connector
 
 import mateuszmacholl.currenciesApi.config.exception.nbp.NbpApiBadRequestException
-import mateuszmacholl.currenciesApi.connector.constructor.CurrencyExchangeRatesNbpApiConstructor
+import mateuszmacholl.currenciesApi.connector.constructor.CurrencyExchangeRatesNbpApiPathConstructor
 import mateuszmacholl.currenciesApi.dto.CurrencyExchangeRatesParameters
 import mateuszmacholl.currenciesApi.model.AverageRatesCurrency
 import org.springframework.stereotype.Repository
@@ -11,10 +11,10 @@ import org.springframework.web.client.getForEntity
 @Repository
 class NbpApiConnector(
         private val restTemplate: RestTemplate,
-        private val currencyExchangeRatesNbpApiConstructor: CurrencyExchangeRatesNbpApiConstructor) {
+        private val currencyExchangeRatesNbpApiPathConstructor: CurrencyExchangeRatesNbpApiPathConstructor) {
 
     fun getCurrencyExchangeRates(currencyExchangeRatesParameters: CurrencyExchangeRatesParameters): AverageRatesCurrency {
-        val path = currencyExchangeRatesNbpApiConstructor.construct(currencyExchangeRatesParameters)
+        val path = currencyExchangeRatesNbpApiPathConstructor.construct(currencyExchangeRatesParameters)
         try {
             val response = restTemplate.getForEntity<AverageRatesCurrency>(path, AverageRatesCurrency::class)
             return response.body!!
