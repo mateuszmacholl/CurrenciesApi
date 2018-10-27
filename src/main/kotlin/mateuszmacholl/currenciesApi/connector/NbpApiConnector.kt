@@ -16,8 +16,7 @@ class NbpApiConnector(
     fun getCurrencyExchangeRates(currencyExchangeRatesParameters: CurrencyExchangeRatesParameters): AverageRatesCurrency {
         val path = currencyExchangeRatesNbpApiPathConstructor.construct(currencyExchangeRatesParameters)
         try {
-            val response = restTemplate.getForEntity<AverageRatesCurrency>(path, AverageRatesCurrency::class)
-            return response.body!!
+            return restTemplate.getForEntity<AverageRatesCurrency>(path, AverageRatesCurrency::class).body!!
         } catch (e: Exception) {
             throw NbpApiBadRequestException()
         }
