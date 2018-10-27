@@ -14,7 +14,7 @@ class CurrencyService(private val nbpApiDao: NbpApiDao,
         return currencyCalculator.getAverage(purchaseRates)
     }
 
-    fun getStandardDeviation(currencyExchangeRatesParameters: CurrencyExchangeRatesParameters): Double {
+    fun getSaleStandardDeviation(currencyExchangeRatesParameters: CurrencyExchangeRatesParameters): Double {
         val salesRates = nbpApiDao.getSalesRates(currencyExchangeRatesParameters)
         return currencyCalculator.getStandardDeviation(salesRates)
     }

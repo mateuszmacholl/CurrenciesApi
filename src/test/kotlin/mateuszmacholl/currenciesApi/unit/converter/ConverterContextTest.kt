@@ -1,4 +1,4 @@
-package mateuszmacholl.currenciesApi.unit
+package mateuszmacholl.currenciesApi.unit.converter
 
 import mateuszmacholl.currenciesApi.converter.Converter
 import mateuszmacholl.currenciesApi.converter.ConverterContext

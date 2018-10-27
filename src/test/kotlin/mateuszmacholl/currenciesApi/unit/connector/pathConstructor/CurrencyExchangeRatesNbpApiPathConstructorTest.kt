@@ -1,6 +1,6 @@
-package mateuszmacholl.currenciesApi.unit
+package mateuszmacholl.currenciesApi.unit.connector.pathConstructor
 
-import mateuszmacholl.currenciesApi.connector.constructor.CurrencyExchangeRatesNbpApiPathConstructor
+import mateuszmacholl.currenciesApi.connector.pathConstructor.CurrencyExchangeRatesNbpApiPathConstructor
 import mateuszmacholl.currenciesApi.dto.CurrencyExchangeRatesParameters
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

@@ -1,7 +1,7 @@
 package mateuszmacholl.currenciesApi.connector
 
 import mateuszmacholl.currenciesApi.config.exception.nbp.NbpApiBadRequestException
-import mateuszmacholl.currenciesApi.connector.constructor.CurrencyExchangeRatesNbpApiPathConstructor
+import mateuszmacholl.currenciesApi.connector.pathConstructor.CurrencyExchangeRatesNbpApiPathConstructor
 import mateuszmacholl.currenciesApi.dto.CurrencyExchangeRatesParameters
 import mateuszmacholl.currenciesApi.model.AverageRatesCurrency
 import org.springframework.stereotype.Repository

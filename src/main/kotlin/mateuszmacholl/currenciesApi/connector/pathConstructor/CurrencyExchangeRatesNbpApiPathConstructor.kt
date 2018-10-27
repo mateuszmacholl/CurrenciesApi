@@ -1,4 +1,4 @@
-package mateuszmacholl.currenciesApi.connector.constructor
+package mateuszmacholl.currenciesApi.connector.pathConstructor
 
 import mateuszmacholl.currenciesApi.dto.CurrencyExchangeRatesParameters
 import org.springframework.stereotype.Repository

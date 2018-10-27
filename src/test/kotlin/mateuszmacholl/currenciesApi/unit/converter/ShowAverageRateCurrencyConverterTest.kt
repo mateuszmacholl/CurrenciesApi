@@ -1,4 +1,4 @@
-package mateuszmacholl.currenciesApi.unit
+package mateuszmacholl.currenciesApi.unit.converter
 
 import mateuszmacholl.currenciesApi.converter.ShowAverageRateCurrencyConverter
 import org.junit.jupiter.api.Assertions.assertEquals

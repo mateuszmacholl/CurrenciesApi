@@ -44,7 +44,7 @@ class CurrencyControllerTest extends Specification {
         given:
         def type = "eur"
         def startDate = "2017-11-20"
-        def endDate = "2017-1-24"
+        def endDate = "2017-24"
         when:
         def response = restTemplate.getForEntity(path + type + '/average-purchase-rate?startDate=' + startDate + '&endDate=' + endDate, ShowAverageRateCurrencyDto.class)
         then:

@@ -38,7 +38,7 @@ class CurrencyController(private val currencyService: CurrencyService,
 
         val currencyExchangeRatesParameters = CurrencyExchangeRatesParameters(type, startDate, endDate)
 
-        val saleStandardDeviation = currencyService.getStandardDeviation(currencyExchangeRatesParameters)
+        val saleStandardDeviation = currencyService.getSaleStandardDeviation(currencyExchangeRatesParameters)
         val converter = converterContext.getConverter(ShowStandardDeviationCurrencyConverter::class)
         val showStandardDeviationCurrencyDto = converter.convert(saleStandardDeviation)
         return ResponseEntity<Any>(showStandardDeviationCurrencyDto, HttpStatus.OK)
