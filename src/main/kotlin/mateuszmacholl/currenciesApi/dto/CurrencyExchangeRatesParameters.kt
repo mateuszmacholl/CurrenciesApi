@@ -1,6 +1,6 @@
 package mateuszmacholl.currenciesApi.dto
 
-data class CurrencyExchangeRatesDto(
+data class CurrencyExchangeRatesParameters(
         val type: String,
         val startDate: String,
         val endDate: String

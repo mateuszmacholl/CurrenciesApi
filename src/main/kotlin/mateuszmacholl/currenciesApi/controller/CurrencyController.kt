@@ -1,6 +1,9 @@
 package mateuszmacholl.currenciesApi.controller
 
-import mateuszmacholl.currenciesApi.converter.CurrencyConverter
+import mateuszmacholl.currenciesApi.converter.ConverterContext
+import mateuszmacholl.currenciesApi.converter.ShowAverageRateCurrencyConverter
+import mateuszmacholl.currenciesApi.converter.ShowStandardDeviationCurrencyConverter
+import mateuszmacholl.currenciesApi.dto.CurrencyExchangeRatesParameters
 import mateuszmacholl.currenciesApi.service.CurrencyService
 import mateuszmacholl.currenciesApi.validation.correctDateFormat.CorrectDateFormat
 import org.springframework.http.HttpStatus
@@ -12,16 +15,19 @@ import org.springframework.web.bind.annotation.*
 @Validated
 @RequestMapping(value =  ["/currencies"])
 class CurrencyController(private val currencyService: CurrencyService,
-                         private val currencyConverter: CurrencyConverter ) {
+                         private val converterContext: ConverterContext ) {
 
     @RequestMapping(value = ["/{type}/average-purchase-rate"], method = [RequestMethod.GET])
     fun getAveragePurchaseRate(@PathVariable(value = "type") type: String,
                                @RequestParam @CorrectDateFormat startDate: String,
                                @RequestParam @CorrectDateFormat endDate: String): ResponseEntity<*>{
 
-        val currencyExchangeRatesDto = currencyConverter.convertToCurrencyExchangeRatesDto(type, startDate, endDate)
-        val averagePurchaseRate = currencyService.getAveragePurchaseRate(currencyExchangeRatesDto)
-        val showAverageRateCurrencyDto = currencyConverter.convertToShowAverageRateCurrencyDto(averagePurchaseRate)
+        val currencyExchangeRatesParameters = CurrencyExchangeRatesParameters(type, startDate, endDate)
+
+        val averagePurchaseRate = currencyService.getAveragePurchaseRate(currencyExchangeRatesParameters)
+
+        val converter = converterContext.getConverter(ShowAverageRateCurrencyConverter::class)
+        val showAverageRateCurrencyDto = converter.convert(averagePurchaseRate)
         return ResponseEntity<Any>(showAverageRateCurrencyDto, HttpStatus.OK)
     }
 
@@ -30,10 +36,11 @@ class CurrencyController(private val currencyService: CurrencyService,
                                  @RequestParam @CorrectDateFormat startDate: String,
                                  @RequestParam @CorrectDateFormat endDate: String): ResponseEntity<*>{
 
-        val currencyExchangeRatesDto = currencyConverter.convertToCurrencyExchangeRatesDto(type, startDate, endDate)
-        val saleStandardDeviation = currencyService.getStandardDeviation(currencyExchangeRatesDto)
-        val showStandardDeviationCurrencyDto = currencyConverter
-                .convertToShowStandardDeviationCurrencyDto(saleStandardDeviation)
+        val currencyExchangeRatesParameters = CurrencyExchangeRatesParameters(type, startDate, endDate)
+
+        val saleStandardDeviation = currencyService.getStandardDeviation(currencyExchangeRatesParameters)
+        val converter = converterContext.getConverter(ShowStandardDeviationCurrencyConverter::class)
+        val showStandardDeviationCurrencyDto = converter.convert(saleStandardDeviation)
         return ResponseEntity<Any>(showStandardDeviationCurrencyDto, HttpStatus.OK)
     }
 }
