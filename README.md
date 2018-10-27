@@ -1,6 +1,6 @@
 # CurrenciesApi
 
-#Endpoints
+# Endpoints
   - /currencies
     - /{type}
       - /average-purchase-rate
