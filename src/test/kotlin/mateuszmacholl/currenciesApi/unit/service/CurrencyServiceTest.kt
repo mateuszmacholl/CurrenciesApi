@@ -33,7 +33,7 @@ class CurrencyServiceTest {
         `when`(nbpApiDao.getSalesRates(currencyExchangeRatesParameters)).thenReturn(list)
         `when`(currencyCalculator.getStandardDeviation(list)).thenReturn(2.5)
         //when
-        val saleStandardDeviation = currencyService.getSaleStandardDeviation(currencyExchangeRatesParameters)
+        val saleStandardDeviation = currencyService.getSalesStandardDeviation(currencyExchangeRatesParameters)
         //then
         assertTrue(saleStandardDeviation == 2.5)
     }

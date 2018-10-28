@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*
 class CurrencyController(private val currencyService: CurrencyService,
                          private val converterContext: ConverterContext ) {
 
-    @RequestMapping(value = ["/{type}/average-purchase-rate"], method = [RequestMethod.GET])
+    @RequestMapping(value = ["/{type}/purchase/average-rate"], method = [RequestMethod.GET])
     fun getAveragePurchaseRate(@PathVariable(value = "type") type: String,
                                @RequestParam @CorrectDateFormat startDate: String,
                                @RequestParam @CorrectDateFormat endDate: String): ResponseEntity<*>{
@@ -31,16 +31,16 @@ class CurrencyController(private val currencyService: CurrencyService,
         return ResponseEntity<Any>(showAverageRateCurrencyDto, HttpStatus.OK)
     }
 
-    @RequestMapping(value = ["/{type}/sale-standard-deviation"], method = [RequestMethod.GET])
+    @RequestMapping(value = ["/{type}/sale/standard-deviation"], method = [RequestMethod.GET])
     fun getSaleStandardDeviation(@PathVariable(value = "type") type: String,
                                  @RequestParam @CorrectDateFormat startDate: String,
                                  @RequestParam @CorrectDateFormat endDate: String): ResponseEntity<*>{
 
         val currencyExchangeRatesParameters = CurrencyExchangeRatesParameters(type, startDate, endDate)
 
-        val saleStandardDeviation = currencyService.getSaleStandardDeviation(currencyExchangeRatesParameters)
+        val salesStandardDeviation = currencyService.getSalesStandardDeviation(currencyExchangeRatesParameters)
         val converter = converterContext.getConverter(ShowStandardDeviationCurrencyConverter::class)
-        val showStandardDeviationCurrencyDto = converter.convert(saleStandardDeviation)
+        val showStandardDeviationCurrencyDto = converter.convert(salesStandardDeviation)
         return ResponseEntity<Any>(showStandardDeviationCurrencyDto, HttpStatus.OK)
     }
 }

@@ -22,7 +22,7 @@ class CurrencyControllerTest extends Specification {
         def endDate = "2017-11-24"
         Double correctAverage = 4.1815
         when:
-        def response = restTemplate.getForEntity(path + type + '/average-purchase-rate?startDate=' + startDate + '&endDate=' + endDate, ShowAverageRateCurrencyDto.class)
+        def response = restTemplate.getForEntity(path + type + '/purchase/average-rate?startDate=' + startDate + '&endDate=' + endDate, ShowAverageRateCurrencyDto.class)
         then:
         HttpStatus.OK == response.statusCode
         response.body.averageRate == correctAverage
@@ -35,7 +35,7 @@ class CurrencyControllerTest extends Specification {
         def startDate = "2017-11-2"
         def endDate = "2017-11-24"
         when:
-        def response = restTemplate.getForEntity(path + type + '/average-purchase-rate?startDate=' + startDate + '&endDate=' + endDate, ShowAverageRateCurrencyDto.class)
+        def response = restTemplate.getForEntity(path + type + '/purchase/average-rate?startDate=' + startDate + '&endDate=' + endDate, ShowAverageRateCurrencyDto.class)
         then:
         HttpStatus.BAD_REQUEST == response.statusCode
     }
@@ -46,7 +46,7 @@ class CurrencyControllerTest extends Specification {
         def startDate = "2017-11-20"
         def endDate = "2017-24"
         when:
-        def response = restTemplate.getForEntity(path + type + '/average-purchase-rate?startDate=' + startDate + '&endDate=' + endDate, ShowAverageRateCurrencyDto.class)
+        def response = restTemplate.getForEntity(path + type + '/purchase/average-rate?startDate=' + startDate + '&endDate=' + endDate, ShowAverageRateCurrencyDto.class)
         then:
         HttpStatus.BAD_REQUEST == response.statusCode
     }
@@ -58,7 +58,7 @@ class CurrencyControllerTest extends Specification {
         def endDate = "2017-11-24"
         Double standardDeviation = 0.0101
         when:
-        def response = restTemplate.getForEntity(path + type + '/sale-standard-deviation?startDate=' + startDate + '&endDate=' + endDate, ShowStandardDeviationCurrencyDto.class, startDate, endDate)
+        def response = restTemplate.getForEntity(path + type + '/sale/standard-deviation?startDate=' + startDate + '&endDate=' + endDate, ShowStandardDeviationCurrencyDto.class, startDate, endDate)
         then:
         HttpStatus.OK == response.statusCode
         response.body.standardDeviation == standardDeviation
@@ -70,7 +70,7 @@ class CurrencyControllerTest extends Specification {
         def startDate = "2017-1-20"
         def endDate = "2017-11-24"
         when:
-        def response = restTemplate.getForEntity(path + type + '/sale-standard-deviation?startDate=' + startDate + '&endDate=' + endDate, ShowStandardDeviationCurrencyDto.class, startDate, endDate)
+        def response = restTemplate.getForEntity(path + type + '/sale/standard-deviation?startDate=' + startDate + '&endDate=' + endDate, ShowStandardDeviationCurrencyDto.class, startDate, endDate)
         then:
         HttpStatus.BAD_REQUEST == response.statusCode
     }
@@ -81,7 +81,7 @@ class CurrencyControllerTest extends Specification {
         def startDate = "2017-11-20"
         def endDate = "2017-1-24"
         when:
-        def response = restTemplate.getForEntity(path + type + '/sale-standard-deviation?startDate=' + startDate + '&endDate=' + endDate, ShowStandardDeviationCurrencyDto.class, startDate, endDate)
+        def response = restTemplate.getForEntity(path + type + '/sale/standard-deviation?startDate=' + startDate + '&endDate=' + endDate, ShowStandardDeviationCurrencyDto.class, startDate, endDate)
         then:
         HttpStatus.BAD_REQUEST == response.statusCode
     }
@@ -92,7 +92,7 @@ class CurrencyControllerTest extends Specification {
         def startDate = "2017-11-20"
         def endDate = "2017-11-24"
         when:
-        def response = restTemplate.getForEntity(path + type + '/sale-standard-deviation?startDate=' + startDate + '&endDate=' + endDate, ShowStandardDeviationCurrencyDto.class, startDate, endDate)
+        def response = restTemplate.getForEntity(path + type + '/sale/standard-deviation?startDate=' + startDate + '&endDate=' + endDate, ShowStandardDeviationCurrencyDto.class, startDate, endDate)
         then:
         HttpStatus.BAD_REQUEST == response.statusCode
     }
