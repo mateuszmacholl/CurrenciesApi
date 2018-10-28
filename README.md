@@ -1,12 +1,12 @@
 # CurrenciesApi
 
-# Endpoints
+## Endpoints
   - /currencies
     - /{type}
       - /average-purchase-rate [GET, parameters: startDate, endDate]
       - /sale-standard-deviation [GET, parameters: startDate, endDate]
       
-# Examples
+## Examples
 Average purchase rate:
   - http://localhost:9007/currencies/eur/average-purchase-rate?startDate=2017-11-20&endDate=2017-11-24
   
