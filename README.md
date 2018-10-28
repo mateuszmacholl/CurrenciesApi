@@ -3,8 +3,8 @@
 # Endpoints
   - /currencies
     - /{type}
-      - /average-purchase-rate [GET]
-      - /sale-standard-deviation [GET]
+      - /average-purchase-rate [GET, parameters: startDate, endDate]
+      - /sale-standard-deviation [GET, parameters: startDate, endDate]
       
 # Examples
 Average purchase rate:
