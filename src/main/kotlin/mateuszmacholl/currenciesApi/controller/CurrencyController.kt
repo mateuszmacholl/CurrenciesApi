@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @Validated
-@RequestMapping(value =  ["/currencies"])
+@RequestMapping(value =  ["/currencies"]) // I have no idea how to better name endpoints
 class CurrencyController(private val currencyService: CurrencyService,
                          private val converterContext: ConverterContext ) {
 

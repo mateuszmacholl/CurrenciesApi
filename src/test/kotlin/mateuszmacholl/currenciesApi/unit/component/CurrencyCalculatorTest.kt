@@ -12,6 +12,7 @@ class CurrencyCalculatorTest {
 
     @BeforeEach
     fun init(){
+        //given
         values.add(5.0)
         values.add(1.0)
         values.add(3.0)
@@ -19,13 +20,17 @@ class CurrencyCalculatorTest {
 
     @Test
     fun getAverage(){
+        //when
         val average = currencyCalculator.getAverage(values)
+        //then
         assertEquals(3.0, average)
     }
 
     @Test
     fun getStandardDeviation(){
+        //when
         val standardDeviation = currencyCalculator.getStandardDeviation(values)
+        //then
         assertEquals(1.633, standardDeviation)
     }
 }
