@@ -6,7 +6,6 @@ import kotlin.math.sqrt
 
 @Component
 class CurrencyCalculator {
-
     fun getAverage(values: List<Double>): Double {
         return Math.round(values.average() * 10000.0) / 10000.0
     }

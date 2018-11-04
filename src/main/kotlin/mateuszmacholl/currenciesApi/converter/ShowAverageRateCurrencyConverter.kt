@@ -5,6 +5,6 @@ import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
 
 @Service
-class ShowAverageRateCurrencyConverter: Converter<Double, ShowAverageRateCurrencyDto>() {
+class ShowAverageRateCurrencyConverter: Converter<Double, ShowAverageRateCurrencyDto> {
     override fun convert(from: Double): ShowAverageRateCurrencyDto = ShowAverageRateCurrencyDto(from)
 }
