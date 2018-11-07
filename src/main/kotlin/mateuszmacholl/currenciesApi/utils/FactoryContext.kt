@@ -1,6 +1,6 @@
 package mateuszmacholl.currenciesApi.utils
 
-// I have no idea in which package should be
+// I have no idea in which package it should be
 abstract class FactoryContext<type> {
     protected var list: MutableList<type> = mutableListOf()
 
