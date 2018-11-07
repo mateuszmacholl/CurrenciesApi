@@ -1,6 +1,6 @@
 package mateuszmacholl.currenciesApi.converter
 
-import mateuszmacholl.currenciesApi.dto.ShowStandardDeviationCurrencyDto
+import mateuszmacholl.currenciesApi.dto.view.ShowStandardDeviationCurrencyDto
 import org.springframework.stereotype.Service
 
 @Service

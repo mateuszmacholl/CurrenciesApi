@@ -1,7 +1,7 @@
 package mateuszmacholl.currenciesApi.integration
 
-import mateuszmacholl.currenciesApi.dto.ShowAverageRateCurrencyDto
-import mateuszmacholl.currenciesApi.dto.ShowStandardDeviationCurrencyDto
+import mateuszmacholl.currenciesApi.dto.view.ShowAverageRateCurrencyDto
+import mateuszmacholl.currenciesApi.dto.view.ShowStandardDeviationCurrencyDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate

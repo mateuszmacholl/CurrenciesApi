@@ -26,7 +26,7 @@ class CurrencyController(private val currencyService: CurrencyService,
 
         val averagePurchaseRate = currencyService.getAveragePurchaseRate(currencyExchangeRatesParameters)
 
-        val converter = converterContext.getConverter(ShowAverageRateCurrencyConverter::class)
+        val converter = converterContext.get(ShowAverageRateCurrencyConverter::class.java)
         val showAverageRateCurrencyDto = converter.convert(averagePurchaseRate)
         return ResponseEntity<Any>(showAverageRateCurrencyDto, HttpStatus.OK)
     }
@@ -39,7 +39,7 @@ class CurrencyController(private val currencyService: CurrencyService,
         val currencyExchangeRatesParameters = CurrencyExchangeRatesParameters(type, startDate, endDate)
 
         val salesStandardDeviation = currencyService.getSalesStandardDeviation(currencyExchangeRatesParameters)
-        val converter = converterContext.getConverter(ShowStandardDeviationCurrencyConverter::class)
+        val converter = converterContext.get(ShowStandardDeviationCurrencyConverter::class.java)
         val showStandardDeviationCurrencyDto = converter.convert(salesStandardDeviation)
         return ResponseEntity<Any>(showStandardDeviationCurrencyDto, HttpStatus.OK)
     }

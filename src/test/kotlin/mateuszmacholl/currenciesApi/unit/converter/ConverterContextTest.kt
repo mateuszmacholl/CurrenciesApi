@@ -19,13 +19,13 @@ class ConverterContextTest {
         val converters = ArrayList<Converter<*,*>>()
         converters.add(ShowAverageRateCurrencyConverter())
         converters.add(ShowStandardDeviationCurrencyConverter())
-        converterContext.setConverters(converters)
+        converterContext.set(converters)
     }
 
     @Test
     fun getConverter_returnCorrectConverter() {
         //when
-        val converter = converterContext.getConverter(ShowAverageRateCurrencyConverter::class)
+        val converter = converterContext.get(ShowAverageRateCurrencyConverter::class.java)
         //then
         assertTrue(ShowAverageRateCurrencyConverter::class.isInstance(converter))
     }
@@ -33,7 +33,7 @@ class ConverterContextTest {
     @Test
     fun getConverter_returnWrongConverter() {
         //when
-        val converter = converterContext.getConverter(ShowAverageRateCurrencyConverter::class)
+        val converter = converterContext.get(ShowAverageRateCurrencyConverter::class.java)
         //then
         assertFalse(ShowStandardDeviationCurrencyConverter::class.isInstance(converter))
     }
@@ -43,11 +43,11 @@ class ConverterContextTest {
         //given
         val converters = ArrayList<Converter<*,*>>()
         converters.add(ShowAverageRateCurrencyConverter())
-        converterContext.setConverters(converters)
+        converterContext.set(converters)
         //then
         assertThrows<IllegalArgumentException>(IllegalArgumentException::class.java) {
             //when
-            converterContext.getConverter(ShowStandardDeviationCurrencyConverter::class)
+            converterContext.get(ShowStandardDeviationCurrencyConverter::class.java)
         }
     }
 

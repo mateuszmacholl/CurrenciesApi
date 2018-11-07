@@ -28,5 +28,4 @@ class CorsFilter : Filter {
     override fun destroy() {
 
     }
-
 }

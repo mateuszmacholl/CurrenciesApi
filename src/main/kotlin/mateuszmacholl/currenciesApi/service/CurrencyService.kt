@@ -1,8 +1,8 @@
 package mateuszmacholl.currenciesApi.service
 
-import mateuszmacholl.currenciesApi.component.CurrencyCalculator
 import mateuszmacholl.currenciesApi.dao.NbpApiDao
 import mateuszmacholl.currenciesApi.dto.CurrencyExchangeRatesParameters
+import mateuszmacholl.currenciesApi.component.CurrencyCalculator
 import org.springframework.stereotype.Service
 
 @Service

@@ -1,7 +1,6 @@
 package mateuszmacholl.currenciesApi.converter
 
-import mateuszmacholl.currenciesApi.dto.ShowAverageRateCurrencyDto
-import org.springframework.stereotype.Component
+import mateuszmacholl.currenciesApi.dto.view.ShowAverageRateCurrencyDto
 import org.springframework.stereotype.Service
 
 @Service

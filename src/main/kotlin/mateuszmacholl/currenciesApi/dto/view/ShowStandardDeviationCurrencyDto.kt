@@ -1,4 +1,4 @@
-package mateuszmacholl.currenciesApi.dto
+package mateuszmacholl.currenciesApi.dto.view
 
 data class ShowStandardDeviationCurrencyDto (
         val standardDeviation: Double
