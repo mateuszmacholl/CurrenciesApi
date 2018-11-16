@@ -1,26 +1,22 @@
 package mateuszmacholl.currenciesApi.unit.converter
 
-import mateuszmacholl.currenciesApi.converter.Converter
 import mateuszmacholl.currenciesApi.converter.ConverterContext
 import mateuszmacholl.currenciesApi.converter.ShowAverageRateCurrencyConverter
 import mateuszmacholl.currenciesApi.converter.ShowStandardDeviationCurrencyConverter
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Assertions.assertThrows
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import java.util.*
+import org.junit.jupiter.api.extension.ExtendWith
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.junit.jupiter.SpringExtension
 
+@ExtendWith(SpringExtension::class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ConverterContextTest {
 
-    private val converterContext = ConverterContext()
-
-    @BeforeEach
-    fun init() {
-        //given
-        val converters = ArrayList<Converter<*,*>>()
-        converters.add(ShowAverageRateCurrencyConverter())
-        converters.add(ShowStandardDeviationCurrencyConverter())
-        converterContext.set(converters)
-    }
+    @Autowired
+    private lateinit var converterContext:ConverterContext
 
     @Test
     fun getConverter_returnCorrectConverter() {
@@ -31,23 +27,13 @@ class ConverterContextTest {
     }
 
     @Test
-    fun getConverter_returnWrongConverter() {
-        //when
-        val converter = converterContext.get(ShowAverageRateCurrencyConverter::class.java)
-        //then
-        assertFalse(ShowStandardDeviationCurrencyConverter::class.isInstance(converter))
-    }
-
-    @Test
     fun getConverter_withNull_throwIllegalArgumentException() {
         //given
-        val converters = ArrayList<Converter<*,*>>()
-        converters.add(ShowAverageRateCurrencyConverter())
-        converterContext.set(converters)
+        val emptyConverterContext = ConverterContext()
         //then
         assertThrows<IllegalArgumentException>(IllegalArgumentException::class.java) {
             //when
-            converterContext.get(ShowStandardDeviationCurrencyConverter::class.java)
+            emptyConverterContext.get(ShowStandardDeviationCurrencyConverter::class.java)
         }
     }
 

@@ -1,24 +1,20 @@
 package mateuszmacholl.currenciesApi.unit.connector.pathConstructor
 
 import mateuszmacholl.currenciesApi.connector.urlConstructor.CurrencyExchangeRatesNbpApiUrlConstructor
-import mateuszmacholl.currenciesApi.connector.urlConstructor.NbpApiUrlConstructor
 import mateuszmacholl.currenciesApi.connector.urlConstructor.NbpApiUrlConstructorContext
 import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import java.util.*
+import org.junit.jupiter.api.extension.ExtendWith
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.junit.jupiter.SpringExtension
 
+@ExtendWith(SpringExtension::class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class NbpApiUrlConstructorContextTest {
 
-    private val nbpApiUrlConstructorContext = NbpApiUrlConstructorContext()
-
-    @BeforeEach
-    fun init() {
-        //given
-        val nbpApiUrlConstructors = ArrayList<NbpApiUrlConstructor<*>>()
-        nbpApiUrlConstructors.add(CurrencyExchangeRatesNbpApiUrlConstructor())
-        nbpApiUrlConstructorContext.set(nbpApiUrlConstructors)
-    }
+    @Autowired
+    private lateinit var nbpApiUrlConstructorContext: NbpApiUrlConstructorContext
 
     @Test
     fun getConverter_returnCorrectConverter() {
@@ -31,12 +27,11 @@ class NbpApiUrlConstructorContextTest {
     @Test
     fun getConverter_withNull_throwIllegalArgumentException() {
         //given
-        val nbpApiUrlConstructor = ArrayList<NbpApiUrlConstructor<*>>()
-        nbpApiUrlConstructorContext.set(nbpApiUrlConstructor)
+        val emptyNbpApiUrlConstructorContext = NbpApiUrlConstructorContext()
         //then
         Assertions.assertThrows<IllegalArgumentException>(IllegalArgumentException::class.java) {
             //when
-            nbpApiUrlConstructorContext.get(CurrencyExchangeRatesNbpApiUrlConstructor::class.java)
+            emptyNbpApiUrlConstructorContext.get(CurrencyExchangeRatesNbpApiUrlConstructor::class.java)
         }
     }
 
